@@ -4,7 +4,13 @@ This project demonstrates a highly available web application deployed on Microso
 
 ---
 
-## 🏗️ Architecture
+## 📊 Architecture Diagram
+
+![Architecture Diagram](./images/diagram.png)
+
+---
+
+## 🏗️ Architecture Overview
 
 * Azure Virtual Network (VNet)
 * Subnet (10.0.1.0/24)
@@ -16,15 +22,16 @@ This project demonstrates a highly available web application deployed on Microso
 
 ---
 
-## 📊 Architecture Diagram
+## 📸 Result
 
-![Architecture Diagram](./diagram.png)
+![Result](./images/result.png)
 
 ---
 
 ## ⚙️ Deployment
 
 ```bash
+cd terraform
 terraform init
 terraform apply
 ```
@@ -37,30 +44,28 @@ terraform apply
 curl http://<LOAD-BALANCER-PUBLIC-IP>
 ```
 
-Run multiple times:
+Loop test:
 
 ```bash
 for i in {1..10}; do curl http://<LOAD-BALANCER-PUBLIC-IP>; echo; done
 ```
 
-Expected output:
-
-* Hello from vm-nginx-01
-* Hello from vm-nginx-02
-
 ---
 
-## 📸 Result
+## 📁 Project Structure
 
-![Result](./result.png)
+```
+terraform/   → Infrastructure as Code
+images/      → Diagram & results
+docs/        → Detailed architecture explanation
+```
 
 ---
 
 ## 🧠 Key Concepts
 
 * Azure Load Balancer (Layer 4)
-* Backend Pool
-* Health Probes
+* Backend Pool & Health Probes
 * Terraform Infrastructure as Code
 * Custom Script Extension
 
@@ -68,14 +73,14 @@ Expected output:
 
 ## 🔮 Future Improvements
 
-* Use VM Scale Set (VMSS)
+* Replace VMs with VM Scale Set (VMSS)
 * Add Azure Application Gateway (Layer 7)
 * Enable HTTPS (SSL)
-* Add Monitoring (Azure Monitor + Log Analytics)
+* Integrate Azure Monitor & Logging
 
 ---
 
 ## 👨‍💻 Author
 
 Muktar Mohamed
-Azure Cloud Engineer | Azure Security Engineer
+Azure Cloud Engineer

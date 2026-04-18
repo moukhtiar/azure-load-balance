@@ -34,7 +34,7 @@ This project demonstrates a highly available web application deployed on Microso
 * Health Probe (HTTP:80)
 * Load Balancing Rule (80 → 80)
 
-* Backend VMs use private IPs only (no direct internet exposure)
+^ Backend VMs use private IPs only (no direct internet exposure)
 ---
 
 ## 📸 Load Balancer Traffic Distribution (Proof)

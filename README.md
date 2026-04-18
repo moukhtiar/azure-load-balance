@@ -20,7 +20,6 @@ terraform init
 terraform apply
 
 
----
 
 ### 🔹 Testing
 

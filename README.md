@@ -6,7 +6,7 @@
 
 ![Status](https://img.shields.io/badge/Project-Completed-brightgreen?style=flat-square)
 
-> Production-style high availability architecture using Azure Load Balancer with private backend VMs and Terraform (IaC).
+> Production-grade high availability architecture using Azure Load Balancer with private backend VMs, health probes, and Terraform (IaC).
 
 This project demonstrates a highly available web application deployed on Microsoft Azure using Terraform.
 

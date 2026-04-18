@@ -4,7 +4,7 @@
 ![NGINX](https://img.shields.io/badge/Web%20Server-NGINX-009639?logo=nginx&logoColor=white&style=flat-square)
 ![Load Balancer](https://img.shields.io/badge/Azure-Load%20Balancer-0078D4?style=flat-square)
 
-![Status](https://img.shields.io/badge/Project-Completed-brightgreen?style=flat-square)
+![Status](https://img.shields.io/badge/Status-Production--Ready-brightgreen?style=flat-square)
 
 > Production-grade high availability architecture using Azure Load Balancer with private backend VMs, health probes, and Terraform (IaC).
 

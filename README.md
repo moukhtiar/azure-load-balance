@@ -1,4 +1,4 @@
-# Azure Load Balancer with NGINX (Terraform)
+# Azure Load Balancer
 
 This project demonstrates a highly available web application deployed on Microsoft Azure using Terraform.
 

@@ -15,11 +15,14 @@ This project demonstrates how to deploy a highly available web application using
 
 ## Deployment
 
+## Deployment
+
 ```bash
-`terraform init
-terraform apply`
+terraform init
+terraform apply
 
 
+---
 
 ### 🔹 Testing
 
@@ -28,11 +31,6 @@ terraform apply`
 
 ```bash
 curl http://<load-balancer-ip>
-
-Expected output:
-
-Hello from vm-nginx-01
-Hello from vm-nginx-02
 
 
 ---
@@ -51,3 +49,4 @@ Hello from vm-nginx-02
 ## Result
 
 ![NGINX Output](./result.png)
+

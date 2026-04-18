@@ -5,6 +5,7 @@
 ![Load Balancer](https://img.shields.io/badge/Azure-Load%20Balancer-0078D4?style=flat-square)
 
 ![Status](https://img.shields.io/badge/Project-Completed-brightgreen?style=flat-square)
+
 This project demonstrates a highly available web application deployed on Microsoft Azure using Terraform.
 
 ---

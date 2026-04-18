@@ -16,8 +16,8 @@ This project demonstrates how to deploy a highly available web application using
 ## Deployment
 
 ```bash
-terraform init
-terraform apply
+`terraform init
+terraform apply`
 
 
 

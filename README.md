@@ -1,16 +1,16 @@
-# 🚀 Azure Load Balancer with NGINX (Terraform)
+# Azure Load Balancer with NGINX (Terraform)
 
 This project demonstrates a highly available web application deployed on Microsoft Azure using Terraform.
 
 ---
 
-## 📊 Architecture Diagram
+## Architecture Diagram
 
 ![Architecture Diagram](./images/diagram.png)
 
 ---
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 * Azure Virtual Network (VNet)
 * Subnet (10.0.1.0/24)
@@ -22,13 +22,13 @@ This project demonstrates a highly available web application deployed on Microso
 
 ---
 
-## 📸 Result
+## Result
 
 ![Result](./images/result.png)
 
 ---
 
-## ⚙️ Deployment
+## Deployment
 
 ```bash
 cd terraform
@@ -38,7 +38,7 @@ terraform apply
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ```bash
 curl http://<LOAD-BALANCER-PUBLIC-IP>
@@ -62,7 +62,7 @@ docs/        → Detailed architecture explanation
 
 ---
 
-## 🧠 Key Concepts
+## Key Concepts
 
 * Azure Load Balancer (Layer 4)
 * Backend Pool & Health Probes
@@ -71,7 +71,7 @@ docs/        → Detailed architecture explanation
 
 ---
 
-## 🔮 Future Improvements
+## Future Improvements
 
 * Replace VMs with VM Scale Set (VMSS)
 * Add Azure Application Gateway (Layer 7)

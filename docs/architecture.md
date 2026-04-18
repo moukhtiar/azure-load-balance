@@ -6,7 +6,7 @@
 
 ---
 
-## 📌 Overview
+##  Overview
 
 This project implements a **production-grade high availability web architecture** using Azure Load Balancer with private backend virtual machines.
 

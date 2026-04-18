@@ -29,7 +29,7 @@ This project demonstrates a highly available web application deployed on Microso
 * Azure Virtual Network (VNet)
 * Subnet (10.0.1.0/24) hosting backend VMs
 * 2x Ubuntu Virtual Machines (Private IP only)
-* Azure Load Balancer (Public)
+* Azure Public Load Balancer (Layer 4)
 * Backend Pool (VMs)
 * Health Probe (HTTP:80)
 * Load Balancing Rule (80 → 80)

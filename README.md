@@ -1,4 +1,4 @@
-# Azure Load Balancer
+# Azure Load Balancer with NGINX (Terraform)
 ![Built with Azure](https://img.shields.io/badge/Built%20with-Microsoft%20Azure-0078D4?logo=microsoft-azure&logoColor=white&style=flat-square)
 ![Terraform](https://img.shields.io/badge/IaC-Terraform-7B42BC?logo=terraform&logoColor=white&style=flat-square)
 ![NGINX](https://img.shields.io/badge/Web%20Server-NGINX-009639?logo=nginx&logoColor=white&style=flat-square)

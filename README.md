@@ -9,8 +9,7 @@
 
 > Production-grade high availability architecture using Azure Load Balancer with private backend VMs, health probes, and Terraform (IaC).
 
-This project demonstrates a highly available web application deployed on Microsoft Azure using Terraform.
-
+This project demonstrates a highly available web application architecture deployed on Microsoft Azure using Terraform.
 ---
 
 ## Architecture Diagram

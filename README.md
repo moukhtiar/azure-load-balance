@@ -6,7 +6,7 @@ This project demonstrates a highly available web application deployed on Microso
 
 ## Architecture Diagram
 
-![Architecture Diagram](./images/diagram.png)
+![Architecture Diagram](./images/diagram.jpg)
 
 ---
 

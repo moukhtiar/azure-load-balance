@@ -37,7 +37,7 @@ This project demonstrates a highly available web application deployed on Microso
 - Backend VMs use private IPs only (no direct internet exposure)
 ---
 
-## 📸 Load Balancer Traffic Distribution (Proof)
+## Load Balancer Traffic Distribution (Proof)
 
 ![Result](./images/result.png)
 

@@ -36,7 +36,7 @@ This project demonstrates a highly available web application deployed on Microso
 
 ---
 
-## Result
+## 📸 Load Balancer Traffic Distribution (Proof)
 
 ![Result](./images/result.png)
 

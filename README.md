@@ -16,6 +16,12 @@ This project demonstrates a highly available web application deployed on Microso
 
 ![Architecture Diagram](./images/diagram.jpg)
 
+## 🔄 Traffic Flow
+
+1. Client sends request to Load Balancer Public IP  
+2. Load Balancer checks backend health via HTTP probe  
+3. Traffic is distributed across healthy VMs  
+4. NGINX serves the response  
 ---
 
 ## Architecture Overview

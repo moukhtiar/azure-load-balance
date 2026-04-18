@@ -2,7 +2,7 @@
 
 ## 📊 Architecture Diagram
 
-![Architecture Diagram](../images/diagram.png)
+![Architecture Diagram](../images/diagram.jpg)
 
 ---
 

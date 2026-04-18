@@ -19,7 +19,7 @@ This project demonstrates a highly available web application deployed on Microso
 ## Architecture Overview
 
 * Azure Virtual Network (VNet)
-* Subnet (10.0.1.0/24)
+* Subnet (10.0.1.0/24) hosting backend VMs
 * 2x Ubuntu Virtual Machines (Private IP only)
 * Azure Load Balancer (Public)
 * Backend Pool (VMs)

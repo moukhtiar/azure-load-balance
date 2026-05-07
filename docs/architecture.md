@@ -1,140 +1,191 @@
-# 🏗️ Architecture Deep Dive
+# Architecture Deep Dive — Azure Load Balancer High Availability Environment
 
-## 📊 Architecture Diagram
+![Cloud](https://img.shields.io/badge/Cloud-Microsoft%20Azure-0078D4)
+![Networking](https://img.shields.io/badge/Networking-Azure%20Load%20Balancer-2563EB)
+![Compute](https://img.shields.io/badge/Compute-Ubuntu%20Linux-E95420)
+![Web](https://img.shields.io/badge/Web-NGINX-009639)
+![Security](https://img.shields.io/badge/Security-NSG%20Protected-0F766E)
+![IaC](https://img.shields.io/badge/IaC-Terraform-7B42BC)
+
+---
+
+## Architecture Diagram
 
 ![Architecture Diagram](../images/diagram.jpg)
 
 ---
 
-##  Overview
+## Overview
 
-This project implements a **production-grade high availability web architecture** using Azure Load Balancer with private backend virtual machines.
+This project implements a highly available Azure web environment using Azure Load Balancer with private backend virtual machines running NGINX.
 
-The design ensures:
+The design focuses on:
 
-* Traffic distribution across multiple instances
-* Automatic failover using health probes
-* Secure backend infrastructure (no public exposure)
-
----
-
-## 🔄 Traffic Flow
-
-1. Client sends HTTP request to Load Balancer Public IP
-2. Azure Load Balancer evaluates backend health using HTTP probe (port 80)
-3. Traffic is routed to a healthy backend VM
-4. NGINX serves the response
-5. If a VM becomes unhealthy, it is automatically removed from rotation
+- High availability
+- Backend isolation
+- Health-based failover
+- Secure network design
+- Infrastructure automation using Terraform
 
 ---
 
-## 🧩 Architecture Components
+## Traffic Flow
 
-### 🌐 Azure Load Balancer (Layer 4)
-
-* Public frontend IP
-* Distributes traffic across backend pool
-* Uses TCP-based load balancing
-
----
-
-### 🖥️ Backend Virtual Machines
-
-* vm-nginx-01 (10.0.1.10)
-* vm-nginx-02 (10.0.1.11)
-* Ubuntu Linux
-* NGINX installed via Custom Script Extension
+| Step | Description |
+|---|---|
+| 1 | Client sends HTTP request to Azure Load Balancer |
+| 2 | Load Balancer checks backend VM health using HTTP probe |
+| 3 | Traffic routed to healthy backend instance |
+| 4 | NGINX serves client response |
+| 5 | Unhealthy VM automatically removed from rotation |
 
 ---
 
-### ❤️ Health Probe
+## Architecture Components
 
-* Protocol: HTTP
-* Port: 80
-* Path: `/`
-* Ensures only healthy VMs receive traffic
+### Azure Load Balancer
+
+| Feature | Details |
+|---|---|
+| Type | Public Load Balancer |
+| Layer | Layer 4 |
+| Frontend | Public IP |
+| Backend Pool | Multiple Ubuntu VMs |
+| Distribution | TCP-based load balancing |
+
+### Backend Virtual Machines
+
+| VM | Private IP |
+|---|---|
+| `vm-nginx-01` | `10.0.1.10` |
+| `vm-nginx-02` | `10.0.1.11` |
+
+### Backend Configuration
+
+- Ubuntu Linux
+- NGINX installed automatically
+- Connected through backend subnet only
+- No direct public exposure
 
 ---
 
-### 🔐 Virtual Network (VNet)
+## Health Probe Configuration
 
-* Address space: 10.0.0.0/16
-* Subnet: 10.0.1.0/24
-* Isolates backend infrastructure
+| Setting | Value |
+|---|---|
+| Protocol | HTTP |
+| Port | 80 |
+| Path | `/` |
+| Purpose | Detect unhealthy backend instances |
 
----
-
-### 🛡️ Network Security Group (NSG)
-
-* Allows inbound HTTP (port 80)
-* Restricts unnecessary exposure
-* Controls access to backend resources
+The health probe ensures traffic is routed only to healthy backend servers.
 
 ---
 
-## 🧠 Design Decisions
+## Virtual Network Design
+
+| Component | Configuration |
+|---|---|
+| Address Space | `10.0.0.0/16` |
+| Backend Subnet | `10.0.1.0/24` |
+
+The VNet isolates backend infrastructure and keeps internal resources separated from direct internet access.
+
+---
+
+## Network Security Controls
+
+### NSG Configuration
+
+| Rule | Purpose |
+|---|---|
+| Allow HTTP (80) | Allow web traffic through Load Balancer |
+| Restrict unnecessary inbound access | Reduce attack surface |
+
+### Security Design
+
+- Backend VMs use private IP addresses only
+- No direct SSH exposure from internet
+- Internet traffic enters only through Load Balancer
+- NSG controls access to backend subnet
+
+---
+
+## Infrastructure as Code
+
+The environment was deployed using Terraform.
+
+### Terraform Benefits
+
+- Repeatable deployments
+- Version-controlled infrastructure
+- Consistent environment provisioning
+- Easier infrastructure management
+
+### Automated Components
+
+- Virtual Network
+- Subnets
+- NSGs
+- Public IP
+- Azure Load Balancer
+- Backend VM deployment
+- Health probe configuration
+
+---
+
+## High Availability Design
+
+| Feature | Purpose |
+|---|---|
+| Multiple backend VMs | Eliminate single point of failure |
+| Load balancing | Distribute client traffic |
+| Health probes | Detect unhealthy instances |
+| Automatic failover | Maintain service availability |
+
+---
+
+## Design Decisions
 
 ### Why Azure Load Balancer?
 
-* Native Azure service
-* Highly available and scalable
-* Simple Layer 4 traffic distribution
-
----
+- Native Azure service
+- Highly available by design
+- Simple and reliable Layer 4 load balancing
+- Low operational overhead
 
 ### Why Private Backend VMs?
 
-* Reduces attack surface
-* Prevents direct internet access
-* Enforces controlled entry via Load Balancer
-
----
+- Reduced external exposure
+- Improved security posture
+- Controlled entry point through Load Balancer
 
 ### Why Health Probes?
 
-* Detects unhealthy instances
-* Enables automatic failover
-* Ensures reliability
+- Automatic unhealthy node detection
+- Improves reliability
+- Prevents failed instances from receiving traffic
 
 ---
 
-### Why Terraform (IaC)?
+## Future Enhancements
 
-* Repeatable deployments
-* Version-controlled infrastructure
-* Production-ready automation approach
+Planned improvements include:
 
----
-
-## 🔐 Security Considerations
-
-* Backend VMs have **private IPs only**
-* No direct SSH or HTTP access from internet
-* All traffic flows through Load Balancer
-* NSG restricts inbound traffic to required ports only
+- VM Scale Set integration
+- Autoscaling configuration
+- Azure Application Gateway deployment
+- HTTPS and SSL/TLS implementation
+- Azure Monitor integration
+- Log Analytics workspace integration
+- Web Application Firewall (WAF)
 
 ---
 
-## 📈 High Availability Strategy
+## Key Takeaways
 
-* Multiple backend VMs eliminate single point of failure
-* Load Balancer distributes traffic evenly
-* Health probe removes unhealthy instances automatically
-
----
-
-## 🔮 Future Enhancements
-
-* Replace VMs with VM Scale Set (autoscaling)
-* Add Azure Application Gateway (Layer 7)
-* Enable HTTPS with SSL/TLS
-* Integrate Azure Monitor & Log Analytics
-* Add Web Application Firewall (WAF)
-
----
-
-## 📚 Key Takeaways
-
-* Demonstrates real-world Azure load balancing design
-* Combines networking, compute, and security principles
-* Built using Infrastructure as Code (Terraform)
+- Demonstrates real-world Azure high availability design
+- Combines networking, compute, and security concepts
+- Uses Infrastructure as Code for repeatable deployment
+- Shows practical Azure Load Balancer implementation
+- Reinforces secure backend infrastructure design

@@ -97,5 +97,5 @@ docs/        → Detailed architecture explanation
 
 ## 👨‍💻 Author
 
-Muktar Mohamed
+Muktar Mohamed.
 Azure Cloud Engineer
